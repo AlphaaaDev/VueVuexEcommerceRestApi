@@ -3,12 +3,17 @@ import { OrdersAxiosService } from "@/services/remote/orders.axios.service";
 
 const initialState = {
     isLoading: true,
-    orders: []
+    orders: [],
+    order: []
 };
 
 const mutations = {
     [OrderAction.local.SET_ORDERS](state, orders) {
         state.orders = orders;
+    },
+
+    [OrderAction.local.SET_ORDER](state, order) {
+        state.order = order;
     }
 };
 
@@ -28,7 +33,8 @@ const actions = {
     [OrderAction.remote.FETCH_BY_ID](context, id) {
         return new Promise((resolve, reject) => {
             OrdersAxiosService.fetchById(id).then(res => {
-                resolve(res.data);
+                context.commit(OrderAction.local.SET_ORDER, res.data.order_items);
+                resolve(res.data.order_items);
             }).catch(err => {
                 context.commit(`notifications/${NotificationAction.SHOW_DIALOG_ERROR}`, err, { root: true });
                 reject(err);
@@ -60,7 +66,9 @@ const actions = {
 };
 
 const getters = {
-    getOrders: state => state.orders
+    getOrders: state => state.orders,
+
+    getOrderProducts: state => state.order
 };
 
 export const orders = {

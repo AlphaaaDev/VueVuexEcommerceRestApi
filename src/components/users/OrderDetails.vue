@@ -3,58 +3,32 @@
         <table id="cart" class="table table-hover table-condensed">
             <thead>
             <tr>
-                <th style="width: 65%" colspan="2">Product</th>
+                <th style="width: 70%" colspan="2">Product</th>
                 <th style="width: 10%">Price</th>
                 <th style="width: 8%">Quantity</th>
                 <th style="width: 22%" class="text-center">Subtotal</th>
-                <th style="width: 15%"></th>
             </tr>
             </thead>
             <tbody>
 
-            <tr v-for="(cartItem, index) in getProductsInCart" :key="index" style="vertical-align:middle;">
+            <tr v-for="(cartItem, index) in getOrderProducts" :key="index" style="vertical-align:middle;">
                 <td>
                     <img :src="cartItem.image_urls && cartItem.image_urls.length > 0 ? `http://localhost:8080${cartItem.image_urls[0]}` : 'https://vuejs.org/images/logo.png'"
                         :alt="cartItem.name + ' Image'"
-                        class="checkout-image"/>
+                        class="checkout-image"/>         
                 </td>
                 <td>
                     <h4>{{cartItem.name}}</h4>
                 </td>
                 <td data-th="Price">${{cartItem.price}}</td>
-                <td data-th="Quantity">
-                    <label>
-                        <input class="form-control text-center" type="number" min="1"
-                               :value="cartItem.quantity" @change="updateCartItem($event, cartItem)"/>
-                    </label>
-                </td>
+                <td data-th="Quantity">{{ cartItem.quantity }}</td>
                 <td data-th="Subtotal" class="text-center">{{calculateSubtotal(cartItem)}}$</td>
-                <td class="actions text-center" data-th="">
-                    <button class="remove-product"
-                            @click="removeFromCart(cartItem)">
-                        X
-                    </button>
-                </td>
             </tr>
             </tbody>
             <tfoot>
-            <tr class="visible-xs">
-                <br>
-            </tr>
             <tr>
-                <td>
-                    <router-link to="/products" class="btn btn-warning">
-                        <i class="fa fa-angle-left"></i> Continue Shopping
-                    </router-link>
-                </td>
-                <td colspan="3" class="hidden-xs"></td>
+                <td colspan="4" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total {{totalPrice()}}</strong>
-                </td>
-                <td>
-                    <router-link to="/checkout" class="btn btn-success btn-block">
-                        Checkout
-                        <i class="fa fa-angle-right"></i>
-                    </router-link>
                 </td>
             </tr>
             </tfoot>
@@ -65,28 +39,25 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex';
-    import {CartAction} from "@/store/types.actions";
+    import {OrderAction} from "@/store/types.actions";
 
     export default {
-        name: 'Checkout',
+        name: 'OrderDetails',
         computed: {
-            ...mapGetters('cart', [
-                'getProductsInCart',
+            ...mapGetters('orders', [
+                'getOrderProducts',
             ]),
         },
-
+        mounted() {
+            this.fetchProducts(this.$route.params.id);
+        },
         methods: {
-            ...mapActions('cart',
+            ...mapActions('orders',
                 {
-                    addProduct: CartAction.ADD_PRODUCT_TO_CART,
-                    updateQuantity: CartAction.UPDATE_CART_ITEM_QUANTITY,
-                    removeProductFromCart: CartAction.REMOVE_FROM_CART
+                    fetchProducts: OrderAction.remote.FETCH_BY_ID,
                 }),
-            hasProduct() {
-                return this.getProductsInCart.length > 0;
-            },
             totalPrice() {
-                const price = this.getProductsInCart.reduce((accumulator, cartItem) =>
+                var price = this.getOrderProducts.reduce((accumulator, cartItem) =>
                     accumulator + cartItem.quantity * cartItem.price, 0);
                 if (price)
                     return price.toFixed(2);
@@ -95,9 +66,6 @@
                     return 0
                 }
 
-            },
-            removeFromCart(cartItem) {
-                this.removeProductFromCart(cartItem);
             },
 
             calculateSubtotal(cartItem) {
@@ -108,11 +76,6 @@
                     // this may occur when you delete all cart items
                     return 0
                 }
-            },
-
-            updateCartItem(event, cartItem) {
-                const quantity = parseInt(event.target.value);
-                this.updateQuantity({cartItem, quantity});
             }
         },
     };

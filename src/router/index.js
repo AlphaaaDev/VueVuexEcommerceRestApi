@@ -12,6 +12,7 @@ import Checkout from '../components/orders/Checkout';
 
 import Settings from '../components/users/Settings';
 import Orders from '../components/users/Orders';
+import OrderDetails from '../components/users/OrderDetails';
 import Addresses from '../components/users/Addresses';
 
 import EditProducts from '../components/admin/EditProducts';
@@ -60,6 +61,13 @@ let router = new Router({
         {
             path: '/users/orders',
             component: Orders,
+            meta: {
+                isAuthenticated: true
+            }
+        },
+        {
+            path: '/users/orders/:id',
+            component: OrderDetails,
             meta: {
                 isAuthenticated: true
             }

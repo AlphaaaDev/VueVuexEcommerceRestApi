@@ -92,15 +92,27 @@
         grid-column: 2/4;
         grid-row: 1/2;
         font-weight: normal;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        height: 3.6em;
+        white-space: normal;
     }
 
     .item-amount {
+        margin-top: -0.4em;
         grid-column: 2/3;
         grid-row: 2/4;
         color: #ddd;
     }
 
+    .item-price {
+        margin-top: -0.4em;
+    }
+
     .cart-info {
+        margin-top: 1em;
         display: flex;
         justify-content: space-between;
         align-items: center;

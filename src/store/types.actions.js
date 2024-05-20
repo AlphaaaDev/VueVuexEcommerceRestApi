@@ -68,7 +68,8 @@ export const OrderAction = {
         MAKE_ORDER_WITH_NEW_ADDRESS: 'MAKE_ORDER_WITH_NEW_ADDRESS'
     },
     local: {
-        SET_ORDERS: 'SET_ORDERS'
+        SET_ORDERS: 'SET_ORDERS',
+        SET_ORDER: 'SET_ORDER'
     }
 };
 

@@ -79,10 +79,10 @@
                 fetchProduct: ProductAction.remote.FETCH_BY_SLUG
             }),
             addProductToCart() {
-                this.addProduct({product: this.product, quantity: parseInt(this.quantity)});
+                this.addProduct({product: this.getProduct, quantity: parseInt(this.quantity)});
             },
             removeFromCart() {
-                this.$store.dispatch(`cart/${CartAction.REMOVE_FROM_CART}`, this.product)
+                this.$store.dispatch(`cart/${CartAction.REMOVE_FROM_CART}`, this.getProducts)
             },
             rated(rate) {
                 return `${rate * 20}%`;

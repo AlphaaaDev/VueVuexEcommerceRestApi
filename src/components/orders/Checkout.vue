@@ -116,7 +116,6 @@
                 }
 
                 promise.then(res => {
-                    if (res.success)
                         this.$router.push('/');
                 }).catch(err => {
                 })
