@@ -2,7 +2,6 @@ import { NotificationAction, CategoryAction } from "@/store/types.actions";
 import { CategoriesAxiosService } from "@/services/remote/categories.axios.service";
 
 const initialState = {
-    isLoading: true,
     categories: []
 };
 
@@ -72,11 +71,3 @@ export const categories = {
     actions,
     getters
 };
-
-function stripResponse(response) {
-    // All my server application return success(boolean) and full_messages(array)
-    // We do not want them to be stored in the state, so let's delete them
-    delete response.success;
-    delete response.full_messages;
-    return response;
-}

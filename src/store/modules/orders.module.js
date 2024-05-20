@@ -2,7 +2,6 @@ import { NotificationAction, OrderAction } from "@/store/types.actions";
 import { OrdersAxiosService } from "@/services/remote/orders.axios.service";
 
 const initialState = {
-    isLoading: true,
     orders: [],
     order: []
 };

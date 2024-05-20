@@ -1,17 +1,7 @@
 import { NotificationAction, ProductAction } from "@/store/types.actions";
 import { ProductsAxiosService } from "@/services/remote/products.axios.service";
 
-
-function stripResponse(response) {
-    // All my server application return success(boolean) and full_messages(array)
-    // We do not want them to be stored in the state, so let's delete them
-    delete response.success;
-    delete response.full_messages;
-    return response;
-}
-
 const initialState = {
-    isLoading: true,
     products: [],
     product: {}
 };

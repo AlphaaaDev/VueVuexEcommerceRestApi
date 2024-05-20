@@ -3,17 +3,17 @@
         <h1><b>Settings</b></h1>
 
         <h3>Username <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editUsername"><span class="bi bi-pencil"></span></button></h3>
-        <h5>{{ this.getUser.username }}</h5>
+        <h5>{{ this.currentUser.username }}</h5>
 
 
         <h3>First name <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editFirstName"><span class="bi bi-pencil"></span></button></h3>
-        <h5>{{ this.getUser.first_name }}</h5>
+        <h5>{{ this.currentUser.first_name }}</h5>
 
         <h3>Last name <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editLastName"><span class="bi bi-pencil"></span></button></h3>
-        <h5>{{ this.getUser.last_name }}</h5>
+        <h5>{{ this.currentUser.last_name }}</h5>
 
         <h3>Email <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editEmail"><span class="bi bi-pencil"></span></button></h3>
-        <h5>{{ this.getUser.email }}</h5>
+        <h5>{{ this.currentUser.email }}</h5>
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPassword">
             Change password
@@ -81,7 +81,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" class="form-control" required name="email" v-model="user.email"/>
+                        <input type="email" class="form-control" required name="email" v-model="user.email"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -120,13 +120,10 @@
         name: 'Settings',
         props: ['settings'],
         computed: {
-            ...mapGetters('settings', ['getUser'])
+            ...mapGetters('auth', ['currentUser'])
         },
         methods: {
-            ...mapActions('settings', { 
-                fetchUser: SettingsAction.local.FETCH_USER,
-                updateField: SettingsAction.remote.UPDATE_FIELD
-            }),
+            ...mapActions('settings', { updateField: SettingsAction.remote.UPDATE_FIELD }),
 
             editUsername() { this.editField({username: this.user.username}) },
             editFirstName() { this.editField({first_name: this.user.first_name}) },
@@ -141,9 +138,6 @@
                     console.error(err);
                 });
             }
-        },
-        mounted() {
-            this.fetchUser();
         },
         data() {
             return {

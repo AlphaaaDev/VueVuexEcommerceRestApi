@@ -27,17 +27,6 @@ computed: {
 }
 ```
 
-## Pages
-
-actions
-remote.FETCH_HOME
-
-mutations
-local.SET_CATEGORIES
-
-getters
-getCategories
-
 ## Auth
 
 actions
@@ -58,14 +47,7 @@ currentUser
 ## Settings
 
 actions
-local.FETCH_USER
 remote.UPDATE_FIELD
-
-mutations
-local.SET_USER
-
-getters
-getUser
 
 ## Products
 
@@ -134,24 +116,13 @@ TOGGLE_POPUP_CART
 
 mutations
 TOGGLE_POPUP_CART
-SET_IS_LOADING
-SHOW_TOAST_SUCCESS
-SHOW_TOAST_ERROR
-CLEAR_TOAST
-SHOW_ALERT_SUCCESS
 SHOW_DIALOG_ERROR
 CLEAR_ALERT
 
 getters
 shouldShowCartDialog
-isAppLoading
-getMessages
-getToast
-getToastMessage
-getToastClassName
 getAlert
 getAlertMessage
-getDialogClassName
 
 ## Cart
 

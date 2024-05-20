@@ -4,7 +4,6 @@ import { cart } from './modules/cart.module';
 import { products } from './modules/products.module';
 import { auth } from './modules/auth.module';
 import { notifications } from './modules/notifications.module';
-import { pages } from './modules/pages.module';
 import { addresses } from './modules/addresses.module';
 import { orders } from './modules/orders.module';
 import { categories } from './modules/categories.module';
@@ -19,7 +18,6 @@ export default new Vuex.Store({
         cart,
         notifications,
         products,
-        pages,
         addresses,
         orders,
         categories,

@@ -2,7 +2,6 @@ import { AddressAction, NotificationAction } from "@/store/types.actions";
 import { AddressesAxiosService } from "@/services/remote/addresses.axios.service";
 
 const initialState = {
-    isLoading: true,
     addresses: []
 };
 

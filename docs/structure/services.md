@@ -33,13 +33,10 @@
 |                        | patch                  | PATCH                       | Patch request                                                            |
 |                        | setUser                |                             | Set user data for requests (Authorization token)                         |
 |                        |                        |                             |                                                                          |
-| PagesAxiosService      | fetchHome              | GET /                       | Fetch homepage categories                                                |
-|                        |                        |                             |                                                                          |
 | AuthAxiosService       | login                  | POST /users/login           | Post login form and return if validated successfully                     |
 |                        | register               | POST /users                 | Post register form and return if validated successfully                  |
 |                        |                        |                             |                                                                          |
-| SettingsAxiosService   | fetchUser              | GET /users                  | Fetch user data                                                          |
-|                        | updateField            | PATCH /users                | Patch user fields and return if patched successfully                     |
+| SettingsAxiosService   | updateField            | PATCH /users                | Patch user fields and return if patched successfully                     |
 |                        |                        |                             |                                                                          |
 | ProductsAxiosService   | fetchAll               | GET /products               | Fetch all products                                                       |
 |                        | fetchBySlug            | GET /products/:slug         | Fetch product by slug                                                    |

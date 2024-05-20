@@ -37,27 +37,10 @@ export const AuthAction = {
 };
 
 export const NotificationAction = {
-    SET_IS_LOADING: 'SET_IS_LOADING',
-    SET_ERROR: 'SET_ERROR',
-
-    SHOW_TOAST_SUCCESS: 'SHOW_TOAST_SUCCESS',
-    SHOW_TOAST_ERROR: 'SHOW_TOAST_ERROR',
-    CLEAR_TOAST: 'CLEAR_TOAST',
-
-    SHOW_ALERT_SUCCESS: 'SHOW_ALERT_SUCCESS',
     SHOW_DIALOG_ERROR: 'SHOW_DIALOG_ERROR',
     CLEAR_ALERT: 'CLEAR_ALERT',
 
     TOGGLE_POPUP_CART: 'TOGGLE_POPUP_CART'
-};
-
-export const PagesAction = {
-    remote: {
-        FETCH_HOME: 'FETCH_HOME',
-    },
-    local: {
-        SET_CATEGORIES: 'SET_CATEGORIES'
-    }
 };
 
 export const OrderAction = {
@@ -96,9 +79,5 @@ export const CategoryAction = {
 export const SettingsAction = {
     remote: {
         UPDATE_FIELD: 'UPDATE_FIELD'
-    },
-    local: {
-        SET_USER: 'SET_USER',
-        FETCH_USER: 'FETCH_USER'
     }
 }

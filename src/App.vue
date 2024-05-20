@@ -3,9 +3,6 @@
         <app-header></app-header>
         <app-notifications></app-notifications>
         <div class="container-fluid">
-            <div class="row text-center" v-if="isAppLoading">
-                <grid-loader :loading="isAppLoading" :color="loaderColor" :size="loaderSize"></grid-loader>
-            </div>
             <transition name="fade">
                 <router-view></router-view>
             </transition>
@@ -20,7 +17,6 @@
     import {NotificationAction} from "@/store/types.actions";
 
     import popupcart from './components/shared/PopupCart';
-    import darkenBackground from './components/shared/DarkenBackground';
 
     import Notifications from "@/components/shared/Notifications";
     import Header from "@/components/shared/Header";
@@ -34,7 +30,6 @@
             appFooter: Footer,
 
             popupcart,
-            darkenBackground,
             GridLoader,
         },
 
@@ -57,8 +52,7 @@
                 'getProductsInCart',
             ]),
             ...mapGetters('notifications', [
-                'shouldShowCartDialog',
-                'isAppLoading'
+                'shouldShowCartDialog'
             ])
         },
     };
