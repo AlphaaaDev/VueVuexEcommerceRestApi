@@ -3,12 +3,12 @@ import Router from 'vue-router';
 import { UsersService } from "@/services/local/users.service";
 
 import Home from "../components/pages/Home";
-import AllProducts from '../components/products/ProductList';
+import Products from '../components/products/Products';
 import ProductDetails from '../components/products/ProductDetails';
 import Category from '../components/categories/Category';
 
 import MyCart from '../components/cart/MyCart';
-import Checkout from '../components/orders/Checkout';
+import Checkout from '../components/cart/Checkout';
 
 import Settings from '../components/users/Settings';
 import Orders from '../components/users/Orders';
@@ -33,7 +33,7 @@ let router = new Router({
         },
         {
             path: '/products',
-            component: AllProducts
+            component: Products
         },
         {
             path: '/products/:slug',
@@ -48,7 +48,7 @@ let router = new Router({
             component: MyCart
         },
         {
-            path: '/checkout',
+            path: '/cart/checkout',
             component: Checkout,
         },
         {
@@ -96,14 +96,14 @@ let router = new Router({
             }
         },
         {
-            path: '/login',
+            path: '/users/login',
             component: Login,
             meta: {
                 isAuthenticated: false
             }
         },
         {
-            path: '/register',
+            path: '/users/register',
             component: Register,
             meta: {
                 isAuthenticated: false
@@ -119,7 +119,7 @@ router.beforeEach((to, from, next) => {
         // User should be authenticated
         if (user == null) {
             return next({
-                path: '/login',
+                path: '/users/login',
                 params: { nextUrl: to.fullPath }
             });
         } else {

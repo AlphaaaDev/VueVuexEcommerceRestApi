@@ -9,7 +9,7 @@
             <transition name="fade">
                 <router-view></router-view>
             </transition>
-            <darken-background v-if="shouldShowCartDialog" @click="this.togglePopupCart"/>
+            <div class="darken-background" v-if="shouldShowCartDialog" @click="this.togglePopupCart"/>
         </div>
         <app-footer></app-footer>
     </div>
@@ -19,7 +19,7 @@
     import {mapActions, mapGetters} from 'vuex';
     import {NotificationAction} from "@/store/types.actions";
 
-    import popupcart from './components/cart/PopupCart';
+    import popupcart from './components/shared/PopupCart';
     import darkenBackground from './components/shared/DarkenBackground';
 
     import Notifications from "@/components/shared/Notifications";
@@ -162,6 +162,16 @@
 
     code {
         font-size: 80%;
+    }
+
+    .darken-background {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.5);
     }
 
 </style>

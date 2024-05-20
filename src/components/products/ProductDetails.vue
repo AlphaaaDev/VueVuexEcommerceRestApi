@@ -39,7 +39,7 @@
     import { ProductAction, CartAction } from "@/store/types.actions";
 
     export default {
-
+        name: 'ProductDetails',
         data() {
             return {
                 product: {},

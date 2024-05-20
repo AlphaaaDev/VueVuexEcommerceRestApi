@@ -104,9 +104,7 @@ const getters = {
 
     getProduct: state => {
         return state.product;
-    },
-
-    getProductBySlug: state => slug => state.products.find(p => p.slug === slug)
+    }
 };
 
 export const products = {

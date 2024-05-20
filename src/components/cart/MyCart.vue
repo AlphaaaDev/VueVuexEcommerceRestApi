@@ -51,7 +51,7 @@
                 <td class="hidden-xs text-center"><strong>Total {{totalPrice()}}</strong>
                 </td>
                 <td>
-                    <router-link to="/checkout" class="btn btn-success btn-block">
+                    <router-link to="/cart/checkout" class="btn btn-success btn-block">
                         Checkout
                         <i class="fa fa-angle-right"></i>
                     </router-link>

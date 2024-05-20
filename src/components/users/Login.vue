@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <router-link to="/register"><a>Register</a></router-link>
+                                <router-link to="/users/register"><a>Register</a></router-link>
                             </div>
                         </div>
                     </div>

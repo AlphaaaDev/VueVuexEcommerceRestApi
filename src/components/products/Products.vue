@@ -31,7 +31,7 @@
     import { ProductAction } from "@/store/types.actions";
 
     export default {
-        name: 'ProductList',
+        name: 'Products',
         computed: {
             ...mapGetters("products", ['getProducts']),
         },
