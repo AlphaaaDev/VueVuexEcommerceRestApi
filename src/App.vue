@@ -3,9 +3,7 @@
         <app-header></app-header>
         <app-notifications></app-notifications>
         <div class="container-fluid">
-            <transition name="fade">
-                <router-view></router-view>
-            </transition>
+            <router-view></router-view>
             <div class="darken-background" v-if="shouldShowCartDialog" @click="this.togglePopupCart"/>
         </div>
         <app-footer></app-footer>
@@ -13,15 +11,14 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex';
-    import {NotificationAction} from "@/store/types.actions";
+    import { mapActions, mapGetters } from 'vuex';
+    import { NotificationAction } from "@/store/types.actions";
 
     import popupcart from './components/shared/PopupCart';
 
     import Notifications from "@/components/shared/Notifications";
     import Header from "@/components/shared/Header";
     import Footer from "@/components/shared/Footer";
-    import GridLoader from 'vue-spinner/src/GridLoader.vue';
 
     export default {
         components: {
@@ -30,30 +27,16 @@
             appFooter: Footer,
 
             popupcart,
-            GridLoader,
         },
-
-        data() {
-            return {
-                loaderColor: "#5cb85c",
-                loaderSize: "50px",
-                displayList: false
-            }
-        },
-
         methods: {
-            ...mapActions('notifications', {togglePopupCart: NotificationAction.TOGGLE_POPUP_CART}),
+            ...mapActions('notifications', { togglePopupCart: NotificationAction.TOGGLE_POPUP_CART }),
             hasProduct() {
                 return this.getProductsInCart.length > 0;
             },
         },
         computed: {
-            ...mapGetters('cart', [
-                'getProductsInCart',
-            ]),
-            ...mapGetters('notifications', [
-                'shouldShowCartDialog'
-            ])
+            ...mapGetters('cart', ['getProductsInCart']),
+            ...mapGetters('notifications', ['shouldShowCartDialog'])
         },
     };
 </script>

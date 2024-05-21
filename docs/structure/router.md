@@ -1,34 +1,49 @@
 # Router
 
-'/' Home
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/'                  | Home           |
 
 ## Products
 
-'/products' Products
-'/products/:slug' ProductDetails
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/products'          | Products       |
+| '/products/:slug'    | ProductDetails |
 
 ## Categories
 
-'/categories/:slug' Category
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/categories/:slug'  | Category       |
 
 ## Cart
 
-'/cart' MyCart
-'/cart/checkout' Checkout
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/cart'              | MyCart         |
+| '/cart/checkout'     | Checkout       |
 
 ## Users
 
-'/users/login' Login
-'/users/register' Register
+
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/users/login'       | Login          |
+| '/users/register'    | Register       |
 
 ### Authenticated
 
-'/users/settings' Settings
-'/users/orders' Orders
-'/users/orders/:id' OrderDetails
-'/users/addresses' Addresses
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/users/settings'    | Settings       |
+| '/users/orders'      | Orders         |
+| '/users/orders/:id'  | OrderDetails   |
+| '/users/addresses'   | Addresses      |
 
 ## Admin (Authenticated and Admin)
 
-'/admin/products' EditProducts
-'/admin/categories' EditCategories
+| Route                | Component      |
+| -------------------- | -------------- |
+| '/admin/products'    | EditProducts   |
+| '/admin/categories'  | EditCategories |
